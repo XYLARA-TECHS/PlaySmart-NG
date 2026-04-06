@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - PlaySmart NG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>PlaySmart NG ✉️ Contact</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="gaming.html">Gaming</a>
+  <a href="data.html">Data</a>
+  <a href="speed-test.html">Speed Test</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>Get in Touch</h1>
+  <p>Have a question, suggestion, or feedback? We’d love to hear from you! ⚡</p>
+</section>
+
+<section class="sections">
+
+  <div class="card">
+    <h2>Contact Form</h2>
+    <form id="contact-form" method="POST">
+      <!-- Web3Forms API Key -->
+      <input type="hidden" name="access_key" value="79a95c5c-5706-470c-9382-e4563a9148c3" />
+
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
+
+      <label for="subject">Subject:</label><br>
+      <input type="text" id="subject" name="subject" placeholder="Subject" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" placeholder="Your message here..." required></textarea><br><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="form-response" style="margin-top: 15px; font-weight:bold;"></div>
+  </div>
+
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const response = document.getElementById('form-response');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    response.style.color = "black";
+    response.textContent = "Sending... ⏳";
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        response.style.color = "green";
+        response.textContent = `✅ Thank you, ${formData.get('name')}! Your message has been sent.`;
+        form.reset();
+      } else {
+        throw new Error(data.message || "Failed to send message");
+      }
+    } catch (err) {
+      response.style.color = "red";
+      response.textContent = `⚠️ Error: ${err.message}`;
+    }
+  });
+</script>
+
+</body>
+</html>

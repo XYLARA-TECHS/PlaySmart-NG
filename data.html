@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data & Internet - PlaySmart NG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>PlaySmart NG 📡 Data & Internet</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="gaming.html">Gaming</a>
+  <a href="data.html">Data</a>
+  <a href="speed-test.html">Speed Test</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>Data Plans & Internet Tips</h1>
+  <p>Save your data, choose the right plan, and stay connected ⚡</p>
+</section>
+
+<section class="sections">
+
+  <!-- Card 1: MiFi vs Phone Hotspot -->
+  <div class="card">
+    <h2>MiFi vs Phone Hotspot</h2>
+    <p>
+      • MiFi: Dedicated device for stable Wi-Fi for multiple devices<br>
+      • Phone Hotspot: Convenient, but drains battery and may be slower<br>
+      Recommendation: Use MiFi if you game or stream often.
+    </p>
+  </div>
+
+  <!-- Card 2: Cheapest/Best Data Plans -->
+  <div class="card">
+    <h2>Cheapest/Best Data Plans</h2>
+    <p>
+      <strong>GLO:</strong> N1,000 ~ 2.6GB OR N3,000 ~ 10.5GB... ALL FOR 30 Days<br>
+      <strong>Airtel:</strong> N5,000 ~ 18GB ~ 30 Days incl 2GB YOUTUBE<br>
+      <strong>MTN:</strong> N5,000 ~ 12GB ~ 30 Days<br>
+      <strong>9mobile:</strong> N2,000 ~ 2.44GB OR N1,500 ~ 5GB... ALL FOR 30 Days
+    </p>
+    <strong>NOTE: PLANS MIGHT BE DIFFERENT FOR EVERYONE</strong>
+  </div>
+
+  <!-- Card 3: Data Saving Tips -->
+  <div class="card">
+    <h2>Data Saving Tips</h2>
+    <p>
+      • Use Wi-Fi whenever possible<br>
+      • Download games and videos on Wi-Fi<br>
+      • Enable data saver in apps<br>
+      • Limit background app data usage
+    </p>
+    <strong>NOTE: APPLICABLE FOR BOTH LAPTOPS, COMPUTERS AND MOBILE PHONE</strong>
+  </div>
+
+  <!-- Card 4: Network Recommendation -->
+  <div class="card">
+    <h2>Best Network for You</h2>
+    <p>Run the speed test first, then click below to see which network suits your speed:</p>
+    <button onclick="recommendNetwork()">Get Recommendation</button>
+    <button onclick="resetNetworkRecommendation()" style="margin-left:10px;">Reset Recommendation</button>
+    <div id="network-result" style="margin-top:15px; font-weight:bold;"></div>
+  </div>
+
+  <!-- Card 5: Game Data Usage Calculator -->
+  <div class="card">
+    <h2>Game Data Usage Calculator</h2>
+    <select id="game-select">
+      <option value="" disabled selected>Select a game</option>
+      <option value="COD">Call of Duty Mobile</option>
+      <option value="FreeFire">Free Fire</option>
+      <option value="PUBG">PUBG Mobile</option>
+      <option value="Efootball">Efootball</option>
+    </select>
+    <button onclick="calculateData()">Calculate Data</button>
+    <div id="data-result" style="margin-top: 15px; font-weight:bold;"></div>
+  </div>
+
+</section>
+
+<!-- Scripts -->
+<script>
+  // ------------------------------
+  // Network Recommendation
+  // ------------------------------
+  function recommendNetwork() {
+    let networkResult = document.getElementById("network-result");
+    let lastSpeed = localStorage.getItem("lastSpeed");
+
+    if (!lastSpeed) {
+      networkResult.innerHTML = "⚠️ Please run the Speed Test first!";
+      return;
+    }
+
+    lastSpeed = parseFloat(lastSpeed);
+    let message = "";
+
+    if (lastSpeed < 2) {
+      message = "😢 Your network is very slow. Consider GLO or Airtel for basic browsing.";
+    } else if (lastSpeed < 5) {
+      message = "📱 Your network is okay for streaming. MTN or 9mobile might work best.";
+    } else if (lastSpeed < 10) {
+      message = "🎬 Your network is good for streaming. All major providers (GLO, MTN, Airtel, 9mobile) are fine.";
+    } else if (lastSpeed < 20) {
+      message = "🎮 Your network is great for gaming & streaming. MTN or GLO recommended for stable connection.";
+    } else {
+      message = "🚀 Excellent network! Any provider will work perfectly, even for heavy gaming.";
+    }
+
+    networkResult.innerHTML = message;
+  }
+
+  function resetNetworkRecommendation() {
+    localStorage.removeItem("lastSpeed");
+    let networkResult = document.getElementById("network-result");
+    if (networkResult) networkResult.innerHTML = "⚠️ Recommendation reset. Run the speed test again!";
+    let result = document.getElementById("result");
+    if (result) result.innerHTML = "";
+  }
+
+  // ------------------------------
+  // Game Data Usage Calculator
+  // ------------------------------
+  function calculateData() {
+    const game = document.getElementById("game-select").value;
+    const result = document.getElementById("data-result");
+
+    if (!game) {
+      result.style.color = "red";
+      result.textContent = "⚠️ Please select a game!";
+      return;
+    }
+
+    const usage = {
+      "COD": 100,       // MB per hour
+      "FreeFire": 50,
+      "PUBG": 150,
+      "Efootball": 70
+    };
+
+    result.style.color = "green";
+    result.textContent = `🎮 ${game} uses roughly ${usage[game]} MB per hour.`;
+  }
+</script>
+
+</body>
+</html>

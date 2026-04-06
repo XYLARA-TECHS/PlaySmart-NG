@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gaming - PlaySmart NG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>PlaySmart NG 🎮 Gaming</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="gaming.html">Gaming</a>
+  <a href="data.html">Data</a>
+  <a href="speed-test.html">Speed Test</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>Gaming Guides & Data Usage</h1>
+  <p>Everything you need to play smart ⚡</p>
+</section>
+
+<section class="sections">
+
+  <!-- Card 1: Game Data Usage -->
+  <div class="card">
+    <h2>Game Data Usage</h2>
+    <p>
+      Call of Duty Mobile: ~35MB - 100MB per hour<br>
+      Free Fire: ~10MB - 30MB per hour<br>
+      PUBG Mobile: ~20MB - 50MB per hour<br>
+      eFootball: ~40MB - 150MB per hour
+    </p>
+  </div>
+
+  <!-- Card 2: Best Emulators -->
+  <div class="card">
+    <h2>Best Emulators</h2>
+    <p>
+      BlueStacks – Best for mid-to-high-end laptops with good RAM and CPU<br>
+      GameLoop – Best for gaming-focused PCs, especially for Tencent games<br>
+      LDPlayer – Lightweight option for low-end laptops or older devices
+    </p>
+
+    <h3>Which to Use?</h3>
+    <ul class="emulator-list">
+      <li class="low">💻 Low-end Laptop → LDPlayer</li>
+      <li class="mid">🖥️ Mid-range Laptop → Gameloop</li>
+      <li class="high">🎮 High-end Laptop → BlueStacks</li>
+    </ul>
+
+    <h4>
+      NOTE: GameLoop can also run on mid-range laptops (8GB RAM+, Core i5 / Ryzen 5+, SSD recommended)
+    </h4>
+  </div>
+
+  <!-- Card 3: Performance Tips -->
+  <div class="card">
+    <h2>Performance Tips</h2>
+    <p>
+      • Close background applications to reduce lag<br>
+      • Lower game graphics if your device is low-end<br>
+      • Use a stable Wi-Fi network for smooth gameplay
+    </p>
+  </div>
+
+  <!-- Card 4: Emulator Recommendation Quiz -->
+  <div class="card">
+    <h2>🎮 Emulator Recommendation Quiz</h2>
+
+    <label>RAM Size:</label><br>
+    <select id="ram">
+      <option value="">Select RAM</option>
+      <option value="4">4GB</option>
+      <option value="8">8GB</option>
+      <option value="16">16GB+</option>
+    </select><br><br>
+
+    <label>CPU Type:</label><br>
+    <select id="cpu">
+      <option value="">Select CPU</option>
+      <option value="i3">Core i3 / Ryzen 3</option>
+      <option value="i5">Core i5 / Ryzen 5</option>
+      <option value="i7">Core i7 / Ryzen 7+</option>
+    </select><br><br>
+
+    <label>Storage Type:</label><br>
+    <select id="storage">
+      <option value="">Select Storage</option>
+      <option value="hdd">HDD</option>
+      <option value="ssd">SSD</option>
+    </select><br><br>
+
+    <label>Usage Type:</label><br>
+    <select id="usage">
+      <option value="">Select Usage</option>
+      <option value="light">Light Gaming</option>
+      <option value="medium">Balanced</option>
+      <option value="heavy">Heavy Gaming</option>
+    </select><br><br>
+
+    <button id="get-recommendation">Get Recommendation</button>
+
+    <div id="emulator-result" style="margin-top:15px; font-weight:bold;"></div>
+    <div id="best-games" style="margin-top:10px; font-weight:bold;"></div>
+  </div>
+
+</section>
+
+<!-- External JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
